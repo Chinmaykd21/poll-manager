@@ -6,7 +6,7 @@ A simple voting application built with **React**, **TypeScript**, **HTML**, and 
 
 Here is a demo of the Poll Manager in action:
 
-![Poll Manager Demo](public/assets/poll-manager-demo.mov)
+![Poll Manager Demo](public/assets/poll-manager.gif)
 
 ## Features
 
