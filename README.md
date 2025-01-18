@@ -141,7 +141,7 @@ export const poll: Poll = {
 
 Here is a demo of the Poll Manager in action:
 
-![Poll Manager Demo](public/assets/demo.gif)
+![Poll Manager Demo](public/assets/poll-manager.gif)
 
 ## License
 
