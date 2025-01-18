@@ -33,17 +33,19 @@
 }
 
 .btn {
-  padding: 0.5rem 1rem;
-  background-color: #4a90e2; /* Updated: Original blue button color */
+  padding: 1rem 2rem; /* Increased button size */
+  background-color: #4a90e2; /* Original blue button color */
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px; /* Slightly larger radius for proportion */
+  font-size: 1.25rem; /* Increased font size for button text */
+  font-weight: bold; /* Emphasize button text */
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .btn:hover {
-  background-color: #357ab8; /* Updated: Original darker blue for hover */
+  background-color: #357ab8; /* Original darker blue for hover */
 }
 
 .btn:disabled {
@@ -52,17 +54,35 @@
 }
 
 .card {
-  padding: 1rem;
+  padding: 2rem;
   border: 1px solid #e0e0e0; /* Updated: Softer gray for card border */
-  border-radius: 4px;
+  border-radius: 6px;
   background-color: #f7f7f7; /* Updated: Lighter gray background */
-  max-width: 400px;
-  margin: 0 auto;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for a clean look */
+  max-width: 600px;
+  max-height: 400px;
+  margin: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a clean look */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .title {
-  font-size: 1.5rem;
+  font-size: 2rem; /* Increased font size for readability */
   font-weight: bold;
   color: #333333; /* Updated: Dark gray for text */
+}
+
+.vote-status {
+  font-size: large;
+  font-weight: bold;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #ffffff;
 }

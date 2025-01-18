@@ -22,7 +22,7 @@ export const Results: React.FC<ResultsProps> = ({
   return (
     <div className="mt-4 text-center">
       {options.map((option) => (
-        <p key={option.id}>
+        <p key={option.id} className="vote-status">
           {option.text} Votes: {option.votes}
         </p>
       ))}
