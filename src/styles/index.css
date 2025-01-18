@@ -1,0 +1,68 @@
+/* src/styles/index.css */
+
+/* Base reset styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Utility styles */
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.ml-4 {
+  margin-left: 1rem;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  background-color: #4a90e2; /* Updated: Original blue button color */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #357ab8; /* Updated: Original darker blue for hover */
+}
+
+.btn:disabled {
+  background-color: #cccccc; /* Gray for disabled buttons */
+  cursor: not-allowed;
+}
+
+.card {
+  padding: 1rem;
+  border: 1px solid #e0e0e0; /* Updated: Softer gray for card border */
+  border-radius: 4px;
+  background-color: #f7f7f7; /* Updated: Lighter gray background */
+  max-width: 400px;
+  margin: 0 auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for a clean look */
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333333; /* Updated: Dark gray for text */
+}
