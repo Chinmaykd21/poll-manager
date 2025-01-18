@@ -2,18 +2,12 @@
 
 A simple voting application built with **React**, **TypeScript**, **HTML**, and **CSS**, bundled using **Vite** and managed with **pnpm**. This application allows users to vote between two options, view the current votes, and declare the winner.
 
-## Demo
-
-Here is a demo of the Poll Manager in action:
-
-![Poll Manager Demo](public/assets/poll-manager.gif)
-
 ## Features
 
 - Dynamic poll question and options.
 - Vote for one of the two options.
 - Disable voting buttons after a winner is declared.
-- Display vote counts dynamically.
+- Display vote counts dynamically, including superhero names.
 - Handle edge cases like ties and no votes.
 - Responsive and accessible UI with clean, minimal styling.
 
@@ -109,11 +103,12 @@ pnpm run preview
 ### Vote
 
 - Displays the voting buttons for each option.
+- Buttons are labeled with superhero names.
 - Disables buttons once the winner is declared.
 
 ### Results
 
-- Displays vote counts for each option.
+- Displays superhero names and their vote counts.
 - Displays the winner or a tie message.
 - Disables the "View Winner" button if no votes are cast.
 
@@ -129,18 +124,24 @@ The poll data is stored in `src/data/Poll.ts`:
 export interface Poll {
   id: number;
   question: string;
-  options: { id: number; text: string }[];
+  options: { id: number; text: string; votes: number }[];
 }
 
 export const poll: Poll = {
   id: 1,
   question: "Who is your favorite superhero?",
   options: [
-    { id: 1, text: "Superman" },
-    { id: 2, text: "Batman" },
+    { id: 1, text: "Superman", votes: 0 },
+    { id: 2, text: "Batman", votes: 0 },
   ],
 };
 ```
+
+## Demo
+
+Here is a demo of the Poll Manager in action:
+
+![Poll Manager Demo](public/assets/demo.gif)
 
 ## License
 

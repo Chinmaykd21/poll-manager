@@ -1,36 +1,29 @@
 import React, { useState } from "react";
 import { Vote } from "./Vote";
 import { Results } from "./Results";
-import { poll } from "../poll";
+import { poll as pollData } from "../poll";
 
 export const PollManager: React.FC = () => {
-  const [votes, setVotes] = useState({
-    [poll.options[0].id]: 0,
-    [poll.options[1].id]: 0,
-  });
+  const [poll, setPoll] = useState(pollData);
   const [winner, setWinner] = useState<string | null>(null);
 
   const handleVote = (optionId: number) => {
-    setVotes((prev) => ({ ...prev, [optionId]: prev[optionId] + 1 }));
+    setPoll((prev) => ({
+      ...prev,
+      options: prev.options.map((option) =>
+        option.id === optionId ? { ...option, votes: option.votes + 1 } : option
+      ),
+    }));
   };
 
   const declareWinner = () => {
-    const votesArray = Object.entries(votes);
-    const option1Votes = votesArray[0][1];
-    const option2Votes = votesArray[1][1];
-
-    if (option1Votes === option2Votes) {
+    const sortedOptions = [...poll.options].sort((a, b) => b.votes - a.votes);
+    if (sortedOptions[0].votes === sortedOptions[1].votes) {
       setWinner("It's a tie!");
-    } else if (option1Votes > option2Votes) {
-      setWinner(
-        `${poll.options[0].text} wins by ${
-          option1Votes - option2Votes
-        } vote(s)!`
-      );
     } else {
       setWinner(
-        `${poll.options[1].text} wins by ${
-          option2Votes - option1Votes
+        `${sortedOptions[0].text} wins by ${
+          sortedOptions[0].votes - sortedOptions[1].votes
         } vote(s)!`
       );
     }
@@ -48,7 +41,6 @@ export const PollManager: React.FC = () => {
       />
       <Results
         options={poll.options}
-        votes={votes}
         winner={winner}
         declareWinner={declareWinner}
         winnerDeclared={winnerDeclared}

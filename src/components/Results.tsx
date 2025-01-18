@@ -1,11 +1,11 @@
 interface Option {
   id: number;
   text: string;
+  votes: number;
 }
 
 interface ResultsProps {
   options: Option[];
-  votes: { [key: number]: number };
   winner: string | null;
   declareWinner: () => void;
   winnerDeclared: boolean;
@@ -13,21 +13,17 @@ interface ResultsProps {
 
 export const Results: React.FC<ResultsProps> = ({
   options,
-  votes,
   winner,
   declareWinner,
   winnerDeclared,
 }) => {
-  const totalVotes = Object.values(votes).reduce(
-    (sum, count) => sum + count,
-    0
-  );
+  const totalVotes = options.reduce((sum, option) => sum + option.votes, 0);
 
   return (
     <div className="mt-4 text-center">
       {options.map((option) => (
         <p key={option.id}>
-          {option.text} Votes: {votes[option.id]}
+          {option.text} Votes: {option.votes}
         </p>
       ))}
       {winner ? <p className="mt-4">{winner}</p> : null}
