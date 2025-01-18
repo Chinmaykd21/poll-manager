@@ -1,50 +1,155 @@
-# React + TypeScript + Vite
+# Poll Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple voting application built with **React**, **TypeScript**, **HTML**, and **CSS**, bundled using **Vite** and managed with **pnpm**. This application allows users to vote between two options, view the current votes, and declare the winner.
 
-Currently, two official plugins are available:
+## Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Here is a demo of the Poll Manager in action:
 
-## Expanding the ESLint configuration
+![Poll Manager Demo](public/assets/poll-manager-demo.mov)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Features
 
-- Configure the top-level `parserOptions` property like this:
+- Dynamic poll question and options.
+- Vote for one of the two options.
+- Disable voting buttons after a winner is declared.
+- Display vote counts dynamically.
+- Handle edge cases like ties and no votes.
+- Responsive and accessible UI with clean, minimal styling.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Tech Stack
+
+- **React** with **TypeScript**
+- **CSS** for styling
+- **Vite** as the bundler
+- **pnpm** for package management
+
+## Folder Structure
+
+```
+poll-manager/
+├── public/
+│   └── index.html
+├── src/
+│   ├── components/
+│   │   ├── PollManager.tsx
+│   │   ├── Vote.tsx
+│   │   └── Results.tsx
+│   ├── data/
+│   │   └── Poll.ts
+│   ├── styles/
+│   │   └── index.css
+│   ├── App.tsx
+│   ├── main.tsx
+│   └── vite-env.d.ts
+├── package.json
+├── tsconfig.json
+└── vite.config.ts
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Getting Started
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Follow these steps to set up and run the project locally:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+### Prerequisites
+
+- **Node.js** and **pnpm** installed on your system.
+- A code editor (e.g., VS Code).
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone <repository-url>
+   cd poll-manager
+   ```
+
+2. Install dependencies using `pnpm`:
+   ```bash
+   pnpm install
+   ```
+
+### Development
+
+To start the development server:
+
+```bash
+pnpm run dev
 ```
+
+The application will be available at `http://localhost:5173`.
+
+### Build
+
+To create a production-ready build:
+
+```bash
+pnpm run build
+```
+
+The build files will be generated in the `dist/` directory.
+
+### Preview
+
+To preview the production build locally:
+
+```bash
+pnpm run preview
+```
+
+## Components
+
+### PollManager
+
+- Manages the application state for votes and winner.
+- Loads dynamic poll data from `Poll.ts`.
+- Renders the `Vote` and `Results` components.
+
+### Vote
+
+- Displays the voting buttons for each option.
+- Disables buttons once the winner is declared.
+
+### Results
+
+- Displays vote counts for each option.
+- Displays the winner or a tie message.
+- Disables the "View Winner" button if no votes are cast.
+
+## Styling
+
+The project uses pure CSS, located in `src/styles/index.css`, for custom styling. Utility classes such as `.btn`, `.card`, and `.title` are used for a clean and responsive design.
+
+## Example Poll Data
+
+The poll data is stored in `src/data/Poll.ts`:
+
+```typescript
+export interface Poll {
+  id: number;
+  question: string;
+  options: { id: number; text: string }[];
+}
+
+export const poll: Poll = {
+  id: 1,
+  question: "Who is your favorite superhero?",
+  options: [
+    { id: 1, text: "Superman" },
+    { id: 2, text: "Batman" },
+  ],
+};
+```
+
+## License
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.
+
+## Contributions
+
+Contributions are welcome! Feel free to submit a pull request or open an issue.
+
+---
+
+Let me know if you need any further updates or additional sections for this README!
